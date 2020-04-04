@@ -26,9 +26,6 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center; }
-    @media screen and (max-width: 640px) {
-      body #main {
-        height: unset; } }
     body #main .container {
       max-width: 1000px;
       margin: 0 auto;
@@ -188,3 +185,12 @@ body {
                   margin: 1em 0; }
                   body #main .container .card-list .card-job .card-job__link .card-job__content-wrapper .card-job__footer .card-job__time {
                     font-size: .75em; } }
+    @media screen and (max-width: 640px) {
+      body #main {
+        height: unset; }
+        body #main .container {
+          margin: unset;
+          padding: unset; }
+          body #main .container .card-list {
+            padding: 0 20px;
+            width: 100vw; } }

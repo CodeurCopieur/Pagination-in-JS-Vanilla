@@ -51,10 +51,6 @@ body {
     display: flex;
     align-items: center;
 
-    @media screen and (max-width: 640px) {
-      height: unset;
-    }
-
     .container {
       @include mwContainer(1000px, 0 auto, 0px 20px);
       .card-list {
@@ -242,6 +238,21 @@ body {
 
             }
           }
+        }
+      }
+    }
+
+    
+    @media screen and (max-width: 640px) {
+      height: unset;
+
+      .container  {
+        margin: unset;
+        padding: unset;
+
+        .card-list{
+          padding: 0 20px;
+          width: 100vw;
         }
       }
     }
