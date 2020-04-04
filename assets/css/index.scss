@@ -1,0 +1,251 @@
+body {
+  font-family: 'circular std', sans-serif;
+
+  a {
+    text-decoration: none;
+  }
+
+  @mixin mwContainer($mw, $margin, $padding){
+    max-width: $mw;
+    margin: $margin;
+    padding: $padding;
+  }
+
+  @mixin posA($position, $right) {
+    position: $position;
+    right: $right;
+  }
+
+  $color_1: rgba(0,0,0,.9);
+  $color_2: #fff;
+
+  #header {
+    background-color: $color_1;
+    padding: 5px 0px;
+    
+    .container {
+     @include mwContainer(1000px, 0 auto, 0px 20px);
+      text-align: center;
+      color: $color_2;
+
+      .nav__list {
+        .nav__item {
+          cursor: pointer;
+          span {
+            i {
+              font-size: 1.5rem;
+            }
+          }
+
+          h1 {
+            font-size: .8rem;
+          }
+        }
+      }
+    }
+  }
+
+  #main {
+    margin: 2rem 0;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: 640px) {
+      height: unset;
+    }
+
+    .container {
+      @include mwContainer(1000px, 0 auto, 0px 20px);
+      .card-list {
+        flex-direction: column;
+
+        .card-job {
+          width: 100%;
+          margin-bottom: .75em;
+          
+
+          .card-job__link {
+
+            display: flex;
+            flex-direction: row;
+            cursor: pointer;
+            position: relative;
+
+            .card-job__wrapper-icone {
+              @include posA(absolute, 0);
+            }
+
+            .card-job__image{
+              .card-job__wrapper {
+                .card-job__logo {
+                  height: 54;
+                  width: 54;
+                }
+              }
+            }
+
+            .card-job__content-wrapper {
+              margin-left: .75em;
+              .card-job__wrapper-title {
+
+                .card-job__title {
+                  font-size: 1rem;
+                  line-height: 1.42857;
+                  font-weight: 600;
+                  color: $color_1;
+                  margin-bottom: .25em;
+                }
+
+                .card-job__company-name {
+                  font-size: .8rem;
+                  font-weight: 100;
+                  color: $color_1;
+                  margin-bottom: .25em;
+                }
+
+                .card-job__location {
+                  display: flex;
+                  font-size: .75rem;
+                  color: $color_1;
+                  margin-bottom: .15em;
+
+                  span {
+                    margin-right: .15em;
+                  }
+                }
+              }
+              .card-job__footer {
+                font-size: .8rem;
+              }
+            }
+          }
+        }
+      }
+
+      
+      .card-numbers__list-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 40%;
+
+        .card-number__btn {
+          padding: 6px 12px;
+          font-size: 1em;
+          cursor: pointer;
+          background-color: $color_1;
+          color: $color_2;
+          border-radius: 2px;
+          transition: all 480ms;
+
+          &:not(:nth-child(3)) {
+            margin-right: 1em;
+          }
+
+          &:hover, &.active {
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+            background-color: $color_2;
+            color: $color_1;
+          }
+        }
+      }
+
+      @media screen and (min-width: 640px) {
+        .card-list {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          .card-job {
+            width: 25%;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 1em;
+            transition: all 480ms;
+
+            &:hover {
+              box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+              border-radius: 2px;
+            }
+
+            .card-job__link {
+              display: flex;
+              flex-direction: column;
+
+              .card-job__wrapper-icone {
+                transform: rotate(90deg);
+                background:$color_1;
+                color: $color_2;
+                padding: 3px 10px;
+                border-radius: 50%;
+                transition: all 480ms;
+
+                &:hover {
+                  background-color: $color_2;
+                  color: $color_1;
+                  box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+                }
+
+                i {
+                  font-size: 15px;
+                }
+              }
+
+              .card-job__image{
+                .card-job__wrapper {
+                  
+                  .card-job__logo {
+
+                  }
+                }
+              }
+
+              .card-job__content-wrapper {
+                margin-left: 0px;
+                .card-job__wrapper-title {
+
+                  .card-job__title {
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: $color_1;
+                    margin-bottom: .25em;
+                  }
+
+                  .card-job__company-name {
+                    font-size: .8rem;
+                    font-weight: 100;
+                    color: $color_1;
+                    margin-bottom: .25em;
+                  }
+
+                  .card-job__location {
+                    display: flex;
+                    justify-content: center;
+                    font-size: .8rem;
+                    color: $color_1;
+                    margin-bottom: .15em;
+
+                    span {
+                      margin-right: .25em;
+                    }
+                  }
+                }
+
+                .card-job__footer {
+                  margin: 1em 0;
+                  .card-job__time {
+                    font-size: .75em;
+                  }
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
