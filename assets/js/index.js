@@ -102,7 +102,6 @@ function getList(jobs, wrapper, rows_per_page, page){
    //tableau d'objet de 0 à 4
    let paginatedItems = jobs.slice(start, end); // 0, 4
 
-  console.log(paginatedItems);
   // on parse le tableau d'objet
   paginatedItems.forEach(item => {
 
@@ -132,18 +131,14 @@ function getList(jobs, wrapper, rows_per_page, page){
 
 function setupPagination(jobs, wrapper, rows_per_page) {
   wrapper.innerHTML = "";
-
-  console.log(jobs.length);
   
   //Math.ceil =>  retourne en nombre entier
   let page_count = Math.ceil(jobs.length / rows_per_page); // 2.5 avec ceil => 3 = 12 / 5;
   //page_count => nombre de page (taille du tableau / nombre d'items par page)
-  console.log(page_count);
 
   for (let index = 1; index < page_count + 1; index++) {
    
-    let btn = paginationBtn(index)
-    
+    let btn = paginationBtn(index, list_jobs)
     //on affecte à la variable " btn " la fonction pagination() on lui met en paramètre index de la boucle for
     wrapper.appendChild(btn);
     //.card-numbers__list-btn on lui ajoute un enfant " btn "
@@ -151,13 +146,24 @@ function setupPagination(jobs, wrapper, rows_per_page) {
 
 }
 
-function paginationBtn(page) {
-  let btn = document.createElement('li')
+function paginationBtn(page, jobs) {
+  let btn = document.createElement('li');
   btn.innerText = page;
+  //on insere du texte a l'élement 'li'
   btn.classList.add('card-number__btn');
 
   if (current_page == page ) btn.classList.add('active');
 
+  btn.addEventListener('click', ()=> {
+    current_page = page;
+    getList(list_jobs, card_list, rows, current_page);
+
+    let current_btn = document.querySelector('.card-number__btn.active');
+    current_btn.classList.remove('active');
+
+    btn.classList.add('active');
+  })
+  
   return btn;
 }
 
